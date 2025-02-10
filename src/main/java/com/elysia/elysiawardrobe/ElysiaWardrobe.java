@@ -36,6 +36,7 @@ public final class ElysiaWardrobe extends JavaPlugin {
         playerManager = PlayerManager.getInstance();
         createFile();
         configManager.loadConfig();
+        playerManager.loadPlayerData();
         Bukkit.getPluginManager().registerEvents(new ElysiaWardrobeListener(), this);
         Bukkit.getPluginManager().registerEvents(new DragonArmourersListener(), this);
         Bukkit.getPluginCommand("ElysiaWardrobe").setExecutor(new CommandManager());
@@ -46,11 +47,13 @@ public final class ElysiaWardrobe extends JavaPlugin {
         new ReloadCommand().register();
         new SeeCommand().register();
         new TakeCommand().register();
+        new SetCommand().register();
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        playerManager.savePlayerData();
     }
     private void createFile() {
         saveDefaultConfig();

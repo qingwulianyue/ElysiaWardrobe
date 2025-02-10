@@ -13,7 +13,7 @@ public class SeeCommand implements ISubCommand{
 
     @Override
     public String[] getAliases() {
-        return new String[]{"s"};
+        return new String[]{"see"};
     }
 
     @Override

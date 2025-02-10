@@ -18,7 +18,7 @@ public class ElysiaWardrobeListener implements Listener {
             skins = ElysiaWardrobe.getConfigManager().getConfigData().getDefault_skins();
         else
             skins = ElysiaWardrobe.getPlayerManager().getPlayerData(uuid);
-        if (skins == null) return;
+        if (skins == null || skins.isEmpty()) return;
         DragonAPI.setEntitySkin(uuid, skins);
         ElysiaWardrobe.getPlayerManager().setPlayerSkin(uuid, skins);
     }

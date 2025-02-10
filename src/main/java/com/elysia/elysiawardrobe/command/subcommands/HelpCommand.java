@@ -21,5 +21,6 @@ public class HelpCommand implements ISubCommand{
         sender.sendMessage("/ElysiaWardrobe take {player} {skin}   -   为玩家的时装列表移除时装");
         sender.sendMessage("/ElysiaWardrobe clear {player}   -   清空玩家的全部时装");
         sender.sendMessage("/ElysiaWardrobe see {player}   -  查看玩家的全部时装");
+        sender.sendMessage("/ElysiaWardrobe set {player} {skin1} {skin2} ...   -  设置玩家的时装");
     }
 }

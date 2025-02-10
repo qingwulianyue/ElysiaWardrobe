@@ -36,10 +36,8 @@ public class CommandTabComplete implements TabCompleter {
             }
         }
         else if (strings.length == 2){
-            if (strings[0].equalsIgnoreCase("add") || strings[0].equalsIgnoreCase("take") || strings[0].equalsIgnoreCase("clear") || strings[0].equalsIgnoreCase("see")) {
-                for (Player player : Bukkit.getOnlinePlayers())
-                    subCommands.add(player.getName());
-            }
+            for (Player player : Bukkit.getOnlinePlayers())
+                subCommands.add(player.getName());
         }
         return subCommands;
     }
