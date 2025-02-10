@@ -1,6 +1,8 @@
 package com.elysia.elysiawardrobe;
 
 import com.elysia.elysiawardrobe.command.CommandManager;
+import com.elysia.elysiawardrobe.command.CommandTabComplete;
+import com.elysia.elysiawardrobe.command.subcommands.*;
 import com.elysia.elysiawardrobe.filemanager.ConfigManager;
 import com.elysia.elysiawardrobe.filemanager.PlayerManager;
 import com.elysia.elysiawardrobe.listener.DragonArmourersListener;
@@ -37,6 +39,13 @@ public final class ElysiaWardrobe extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new ElysiaWardrobeListener(), this);
         Bukkit.getPluginManager().registerEvents(new DragonArmourersListener(), this);
         Bukkit.getPluginCommand("ElysiaWardrobe").setExecutor(new CommandManager());
+        Bukkit.getPluginCommand("ElysiaWardrobe").setTabCompleter(new CommandTabComplete());
+        new AddCommand().register();
+        new ClearCommand().register();
+        new HelpCommand().register();
+        new ReloadCommand().register();
+        new SeeCommand().register();
+        new TakeCommand().register();
     }
 
     @Override

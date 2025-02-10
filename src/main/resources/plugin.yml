@@ -4,3 +4,5 @@ main: com.elysia.elysiawardrobe.ElysiaWardrobe
 commands:
   ElysiaWardrobe:
     permission: admin
+    aliases:
+      - ew

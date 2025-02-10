@@ -14,12 +14,12 @@ public class ElysiaWardrobeListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event){
         UUID uuid = event.getPlayer().getUniqueId();
         List<String> skins;
-        if (ElysiaWardrobe.getPlayerManager().getPlayerData(uuid) == null){
+        if (ElysiaWardrobe.getPlayerManager().getPlayerData(uuid) == null)
             skins = ElysiaWardrobe.getConfigManager().getConfigData().getDefault_skins();
-            ElysiaWardrobe.getPlayerManager().setPlayerSkin(uuid, skins);
-        }
         else
             skins = ElysiaWardrobe.getPlayerManager().getPlayerData(uuid);
+        if (skins == null) return;
         DragonAPI.setEntitySkin(uuid, skins);
+        ElysiaWardrobe.getPlayerManager().setPlayerSkin(uuid, skins);
     }
 }

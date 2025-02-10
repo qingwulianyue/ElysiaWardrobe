@@ -20,7 +20,15 @@ public class PlayerManager {
         playerData.add(skin);
         playerDataHashMap.put(uuid, playerData);
     }
+    public void takePlayerSkin(UUID uuid, String skin){
+        List<String> playerData = playerDataHashMap.getOrDefault(uuid, new ArrayList<>());
+        playerData.remove(skin);
+        playerDataHashMap.put(uuid, playerData);
+    }
     public void setPlayerSkin(UUID uuid, List<String> skin){
         playerDataHashMap.put(uuid, skin);
+    }
+    public void clearPlayerData(UUID uuid){
+        playerDataHashMap.put(uuid, new ArrayList<>());
     }
 }
