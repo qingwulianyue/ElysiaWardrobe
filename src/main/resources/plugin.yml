@@ -1,3 +1,6 @@
 name: ElysiaWardrobe
 version: '${project.version}'
 main: com.elysia.elysiawardrobe.ElysiaWardrobe
+commands:
+  ElysiaWardrobe:
+    permission: admin
