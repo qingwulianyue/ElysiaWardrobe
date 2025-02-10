@@ -1,0 +1,9 @@
+debug: true
+prefix: "§6[时装系统]"
+save_timer: 300
+save_tips: true
+default_skins:
+  - 默认时装
+messages:
+  enable: §c新的形象%name%已应用
+  disable: §c形象%name%已失效
