@@ -17,7 +17,6 @@ public class FileListener {
             public void onFileChange(File file) {
                 if (file.getName().equals("config.yml"))
                     ElysiaWardrobe.getConfigManager().loadConfig();
-                ElysiaWardrobe.getInstance().getLogger().info("文件更改: " + file.getName());
             }
         });
         FileAlterationMonitor monitor = new FileAlterationMonitor(POLL_INTERVAL, observer);
