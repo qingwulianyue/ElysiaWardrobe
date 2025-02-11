@@ -4,11 +4,13 @@ import com.elysia.elysiawardrobe.command.CommandManager;
 import com.elysia.elysiawardrobe.command.CommandTabComplete;
 import com.elysia.elysiawardrobe.command.subcommands.*;
 import com.elysia.elysiawardrobe.filemanager.ConfigManager;
+import com.elysia.elysiawardrobe.filemanager.FileListener;
 import com.elysia.elysiawardrobe.filemanager.PlayerManager;
 import com.elysia.elysiawardrobe.listener.DragonArmourersListener;
 import com.elysia.elysiawardrobe.listener.ElysiaWardrobeListener;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -48,6 +50,8 @@ public final class ElysiaWardrobe extends JavaPlugin {
         new SeeCommand().register();
         new TakeCommand().register();
         new SetCommand().register();
+        FileListener.startWatching(getDataFolder());
+        startAutomaticSavePlayerDataTask();
     }
 
     @Override
@@ -72,5 +76,16 @@ public final class ElysiaWardrobe extends JavaPlugin {
                 throw new UncheckedIOException("Failed to create directory.", e);
             }
         }
+    }
+    private void startAutomaticSavePlayerDataTask() {
+        long ticks = configManager.getConfigData().getSave_timer() * 20L;
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (configManager.getConfigData().isSave_tips())
+                    getLogger().info("§e开始保存玩家数据");
+                playerManager.savePlayerData();
+            }
+        }.runTaskTimerAsynchronously(this, 0L, ticks);
     }
 }
